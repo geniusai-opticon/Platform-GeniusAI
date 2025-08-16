@@ -1,0 +1,24 @@
+{
+  "name": "geniusai-netlify-ready",
+  "version": "1.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@supabase/supabase-js": "^2.45.3",
+    "stripe": "^14.24.0",
+    "next-auth": "^4.24.7"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.8.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
