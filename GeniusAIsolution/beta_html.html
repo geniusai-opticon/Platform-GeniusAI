@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GENIUS.AI.SOLUTION — Beta: 3 Monate Premium kostenlos | KI-Vertragsoptimierung</title>
+  <meta name="description" content="🚀 Exklusive Beta: KI optimiert deine Verträge automatisch. Spare durchschnittlich €1.247/Jahr. Nur 1000 Plätze verfügbar - 3 Monate Premium KOSTENLOS!" />
+  <meta name="keywords" content="KI Vertragsoptimierung, Geld sparen, Stromvergleich, Versicherung optimieren, Beta Test" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0b1020" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="GENIUS.AI Beta - 3 Monate Premium kostenlos" />
+  <meta property="og:description" content="KI optimiert deine Verträge automatisch. Spare €1.247/Jahr. Nur 1000 Beta-Plätze!" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GENIUS.AI Beta - KI spart €1.247/Jahr" />
+  <meta name="twitter:description" content="Exklusive Beta: 3 Monate Premium kostenlos. Nur 1000 Plätze!" />
+  
+  <style>
+    /* ---------- OPTIMIERTE BASIS ---------- */
+    :root{
+      --bg:#0b1020; --card:#0f1724; --glass: rgba(255,255,255,0.06);
+      --accent:#7C5CFF; --secondary:#3ddc97; --muted:#9aa7c7; --success:#2dd4bf;
+      --danger:#ef4444; --warning:#f59e0b;
+      --shadow: 0 8px 32px rgba(2,6,23,0.7);
+      --glass-border: rgba(255,255,255,0.08);
+      --gradient: linear-gradient(135deg, var(--accent), var(--secondary));
+      --gradient-hover: linear-gradient(135deg, #8b6cff, #4ee7a3);
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto;
+    }
+    
+    *{box-sizing:border-box; margin:0; padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:
+      radial-gradient(1000px 500px at 15% 15%, rgba(124,92,255,0.15), transparent 50%),
+      radial-gradient(800px 400px at 85% 85%, rgba(61,220,151,0.08), transparent 50%),
+      radial-gradient(600px 300px at 50% 100%, rgba(34,197,94,0.06), transparent 50%),
+      linear-gradient(180deg, var(--bg), #050814 120%);
+      color:#e6eef8; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; overflow-x:hidden;
+      min-height:100vh; font-size:16px; line-height:1.6;
+    }
+
+    /* ---------- ANIMATIONEN ---------- */
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(30px) }
+      to { opacity:1; transform:translateY(0) }
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    @keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(124,92,255,0.3)} 50%{box-shadow:0 0 40px rgba(124,92,255,0.6)} }
+    @keyframes shimmer {
+      0% { background-position: -200px 0 }
+      100% { background-position: 200px 0 }
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    .animate-in { animation: fadeInUp 0.8s ease-out }
+    .animate-pulse { animation: pulse 2s infinite }
+    .animate-glow { animation: glow 3s infinite }
+    .animate-float { animation: float 6s ease-in-out infinite }
+
+    /* ---------- LAYOUT ---------- */
+    .container{
+      width:100%; max-width:1200px; padding:28px;
+      display:grid; grid-template-columns: 1fr 440px; gap:40px;
+      align-items:start; margin:0 auto;
+    }
+    @media (max-width:1024px){
+      .container{grid-template-columns:1fr; gap:24px; padding:20px; max-width:800px}
+    }
+
+    /* ---------- ENHANCED TOPBAR ---------- */
+    .topbar{
+      position:fixed; top:0; z-index:100; width:100%;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(11,16,32,0.85), rgba(11,16,32,0.75));
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      padding:12px 24px; transition: all 0.3s ease;
+    }
+    .topbar.scrolled {
+      background: rgba(11,16,32,0.95);
+      border-bottom-color: rgba(124,92,255,0.3);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    .nav{display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto}
+    .brand{display:flex; align-items:center; gap:12px; cursor:pointer}
+    .logo{
+      width:48px; height:48px; border-radius:12px;
+      background:var(--gradient); display:flex; align-items:center; 
+      justify-content:center; font-weight:800; color:white; font-size:18px;
+      box-shadow:0 8px 30px rgba(124,92,255,0.4); transition:transform 0.3s;
+    }
+    .logo:hover{transform:scale(1.1) rotate(5deg)}
+    
+    .brand-text{font-weight:700; font-size:18px}
+    .brand-tagline{font-size:11px; color:var(--muted); margin-top:2px}
+    
+    .countdown{
+      font-weight:700; font-size:14px; color:#fff;
+      background:linear-gradient(90deg, rgba(124,92,255,0.2), rgba(61,220,151,0.2));
+      padding:10px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1);
+      display:flex; gap:8px; align-items:center; animation:glow 4s infinite;
+    }
+    .countdown-emoji{animation:pulse 2s infinite}
+
+    .nav-stats{
+      display:flex; gap:20px; align-items:center; font-size:12px; color:var(--muted);
+    }
+    .nav-stat{display:flex; align-items:center; gap:6px}
+    .nav-stat strong{color:var(--secondary)}
+
+    /* ---------- ENHANCED HERO ---------- */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border-radius:20px; padding:40px; box-shadow:var(--shadow);
+      border:1px solid var(--glass-border); position:relative; overflow:hidden;
+      margin-top:100px;
+    }
+    
+    .hero::before{
+      content:''; position:absolute; top:0; left:0; right:0; height:1px;
+      background:linear-gradient(90deg, transparent, rgba(124,92,255,0.5), transparent);
+    }
+    
+    .badge{
+      display:inline-block; padding:8px 16px; border-radius:50px; 
+      background:linear-gradient(90deg, rgba(124,92,255,0.15), rgba(61,220,151,0.15));
+      color:var(--secondary); font-weight:700; font-size:13px; margin-bottom:20px;
+      border:1px solid rgba(61,220,151,0.3); animation:shimmer 2s infinite;
+      background-size:200px 100%;
+    }
+    
+    h1{
+      font-size:clamp(28px, 5vw, 42px); margin:10px 0 20px; line-height:1.1; 
+      font-weight:800; background:linear-gradient(135deg, #fff, var(--muted));
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    
+    .hero-highlight{
+      color:var(--secondary); font-weight:800; 
+      text-shadow:0 0 20px rgba(61,220,151,0.5);
+    }
+    
+    p.lead{
+      color:var(--muted); margin-bottom:24px; max-width:55ch; font-size:18px;
+      line-height:1.7;
+    }
+    
+    .stats{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); 
+      gap:16px; margin:24px 0;
+    }
+    .stat{
+      background:rgba(255,255,255,0.03); padding:20px; border-radius:16px; 
+      text-align:center; border:1px solid rgba(255,255,255,0.05);
+      transition:all 0.3s; cursor:pointer;
+    }
+    .stat:hover{
+      transform:translateY(-5px); border-color:rgba(124,92,255,0.3);
+      box-shadow:0 8px 25px rgba(124,92,255,0.2);
+    }
+    .stat-number{
+      display:block; font-size:24px; font-weight:800; 
+      background:var(--gradient); -webkit-background-clip:text; 
+      background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .stat-label{font-size:12px; color:var(--muted); margin-top:4px}
+    .stat-sublabel{font-size:11px; color:var(--muted); opacity:0.8; margin-top:2px}
+
+    /* ---------- ENHANCED CTA BUTTONS ---------- */
+    .hero-cta{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap}
+    
+    button.cta{
+      background:var(--gradient); color:#fff; border:none; 
+      padding:16px 32px; border-radius:12px; font-weight:800; font-size:16px;
+      cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden;
+      box-shadow:0 8px 25px rgba(124,92,255,0.4);
+    }
+    button.cta:hover{
+      transform:translateY(-2px); box-shadow:0 12px 35px rgba(124,92,255,0.6);
+      background:var(--gradient-hover);
+    }
+    button.cta::before{
+      content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition:left 0.5s;
+    }
+    button.cta:hover::before{left:100%}
+    
+    button.ghost{
+      background:transparent; border:2px solid rgba(255,255,255,0.2); 
+      padding:14px 28px; border-radius:12px; color:var(--muted); cursor:pointer;
+      font-weight:600; transition:all 0.3s;
+    }
+    button.ghost:hover{
+      border-color:var(--accent); color:white; 
+      box-shadow:0 4px 15px rgba(124,92,255,0.3);
+    }
+
+    /* ---------- ENHANCED RIGHT PANEL ---------- */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border-radius:20px; padding:32px; box-shadow:var(--shadow);
+      border:1px solid var(--glass-border); position:sticky; top:120px;
+      transition:all 0.3s;
+    }
+    .card:hover{
+      transform:translateY(-5px); box-shadow:0 12px 40px rgba(2,6,23,0.8);
+      border-color:rgba(124,92,255,0.2);
+    }
+    
+    .card h3{margin-bottom:20px; font-size:22px; font-weight:700}
+    
+    .seats{
+      display:flex; gap:12px; align-items:center; margin-bottom:20px; flex-wrap:wrap;
+    }
+    .seats .pill{
+      background:var(--gradient); color:white; padding:10px 18px; 
+      border-radius:50px; font-weight:700; font-size:13px;
+      box-shadow:0 4px 15px rgba(124,92,255,0.3); animation:pulse 3s infinite;
+    }
+    .seats .value{font-size:12px; color:var(--success); font-weight:600}
+
+    /* ---------- ENHANCED FORM ---------- */
+    form .row{display:flex; gap:8px; margin-bottom:12px}
+    form input, form select{
+      width:100%; padding:16px; border-radius:12px; 
+      border:2px solid rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.05); color:inherit; outline:none;
+      font-size:14px; transition:all 0.3s;
+    }
+    form input:focus, form select:focus{
+      border-color:var(--accent); box-shadow:0 0 0 3px rgba(124,92,255,0.1);
+      background:rgba(255,255,255,0.08);
+    }
+    form input::placeholder{color:var(--muted); opacity:0.7}
+    
+    .checkbox-row{
+      display:flex; gap:12px; align-items:flex-start; margin:16px 0;
+      padding:12px; border-radius:8px; background:rgba(255,255,255,0.02);
+    }
+    .checkbox-row input[type="checkbox"]{
+      width:18px; height:18px; margin:0; accent-color:var(--accent);
+    }
+    .checkbox-row label{font-size:13px; color:var(--muted); line-height:1.4}
+
+    .actions{display:flex; gap:10px; margin-top:20px}
+    .form-cta{
+      flex:1; background:var(--gradient); color:#fff; border:none; 
+      padding:18px; border-radius:12px; font-weight:800; font-size:16px;
+      cursor:pointer; transition:all 0.3s;
+      box-shadow:0 6px 20px rgba(124,92,255,0.4);
+    }
+    .form-cta:hover{
+      transform:translateY(-2px); box-shadow:0 8px 30px rgba(124,92,255,0.6);
+    }
+    .form-cta:disabled{
+      opacity:0.6; cursor:not-allowed; transform:none;
+    }
+
+    /* ---------- OAUTH BUTTONS ---------- */
+    .oauths{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px}
+    .oauth-btn{
+      padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); 
+      background:rgba(255,255,255,0.04); cursor:pointer; transition:all 0.3s;
+      font-size:13px; font-weight:600; display:flex; align-items:center; 
+      justify-content:center; gap:6px;
+    }
+    .oauth-btn:hover{
+      background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2);
+      transform:translateY(-1px);
+    }
+
+    /* ---------- REFERRAL SECTION ---------- */
+    .referral-section{
+      margin-top:24px; padding:20px; border-radius:12px; 
+      background:linear-gradient(135deg, rgba(124,92,255,0.1), rgba(61,220,151,0.1));
+      border:1px solid rgba(124,92,255,0.2);
+    }
+    .referral-title{font-weight:600; margin-bottom:12px; color:var(--secondary)}
+    .referral-input-group{display:flex; gap:8px; margin-bottom:12px}
+    .referral-input{
+      flex:1; padding:12px; border-radius:8px; 
+      border:1px solid rgba(255,255,255,0.1); 
+      background:rgba(255,255,255,0.05); font-family:monospace; font-size:12px;
+    }
+    .copy-btn{
+      background:var(--accent); color:white; border:none; padding:12px 16px;
+      border-radius:8px; cursor:pointer; font-weight:600; transition:all 0.3s;
+    }
+    .copy-btn:hover{background:#8b6cff; transform:scale(1.05)}
+
+    .share-buttons{display:flex; gap:8px; justify-content:space-between}
+    .share-btn{
+      flex:1; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.03); cursor:pointer; font-size:12px;
+      font-weight:600; transition:all 0.3s; text-align:center;
+    }
+    .share-btn:hover{background:rgba(255,255,255,0.08); transform:translateY(-1px)}
+
+    .hint{
+      font-size:12px; color:var(--muted); margin-top:12px; 
+      padding:12px; background:rgba(255,255,255,0.02); border-radius:8px;
+      border-left:3px solid var(--secondary);
+    }
+
+    /* ---------- ENHANCED MODAL ---------- */
+    .modal{
+      position:fixed; inset:0; display:flex; align-items:center; justify-content:center; 
+      z-index:200; backdrop-filter:blur(8px); visibility:hidden; opacity:0; 
+      transition:all 0.3s ease; background:rgba(0,0,0,0.5);
+    }
+    .modal.show{visibility:visible; opacity:1}
+    .modal .box{
+      background:linear-gradient(180deg, #0a1128, #061018); padding:40px; 
+      border-radius:20px; width:min(600px, 95%); box-shadow:0 20px 60px rgba(0,0,0,0.7);
+      border:1px solid rgba(255,255,255,0.1); position:relative; overflow:hidden;
+      animation:fadeInUp 0.5s ease;
+    }
+    .modal .box::before{
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:var(--gradient);
+    }
+
+    .modal h2{margin-bottom:16px; font-size:24px; display:flex; align-items:center; gap:12px}
+    .modal-success{color:var(--success)}
+    .modal-referral-box{
+      background:rgba(124,92,255,0.1); padding:20px; border-radius:12px; 
+      margin:20px 0; border:1px solid rgba(124,92,255,0.3);
+    }
+    .modal-cta{display:flex; gap:12px; margin-top:24px}
+
+    /* ---------- FLOATING ELEMENTS ---------- */
+    .floating{
+      position:absolute; right:-50px; top:-50px; opacity:0.1; 
+      transform:rotate(15deg); font-size:120px; pointer-events:none;
+      animation:float 8s ease-in-out infinite;
+    }
+
+    .trust-badges{
+      display:flex; justify-content:center; gap:20px; margin-top:20px; 
+      flex-wrap:wrap; opacity:0.7;
+    }
+    .trust-badge{
+      font-size:11px; color:var(--muted); display:flex; align-items:center; gap:4px;
+    }
+
+    /* ---------- ENHANCED RESPONSIVENESS ---------- */
+    @media (max-width:768px){
+      .container{padding:16px}
+      .hero{padding:24px; margin-top:80px}
+      h1{font-size:24px}
+      .stats{grid-template-columns:repeat(2,1fr); gap:12px}
+      .hero-cta{flex-direction:column}
+      .card{padding:24px; position:static}
+      .oauths{grid-template-columns:1fr}
+      .share-buttons{flex-direction:column}
+      .countdown{font-size:12px; padding:8px 12px}
+    }
+
+    /* ---------- ACCESSIBILITY ---------- */
+    input:focus,button:focus,select:focus{
+      box-shadow:0 0 0 3px rgba(124,92,255,0.3); outline:none;
+    }
+    
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); border:0;
+    }
+
+    /* ---------- LOADING STATES ---------- */
+    .loading{
+      display:inline-block; width:20px; height:20px; 
+      border:2px solid rgba(255,255,255,0.3); border-radius:50%;
+      border-top-color:var(--accent); animation:spin 1s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ---------- SUCCESS ANIMATIONS ---------- */
+    .success-checkmark{
+      width:50px; height:50px; border-radius:50%; display:block;
+      stroke-width:2; stroke:#2dd4bf; stroke-miterlimit:10; margin:20px auto;
+      box-shadow:inset 0 0 0 #2dd4bf; animation:fill 0.4s ease-in-out 0.4s forwards, 
+      scale 0.3s ease-in-out 0.9s both;
+    }
+    .success-checkmark__circle{
+      stroke-dasharray:166; stroke-dashoffset:166; stroke-width:2;
+      stroke-miterlimit:10; stroke:#2dd4bf; fill:none;
+      animation:stroke 0.6s cubic-bezier(0.65,0,0.45,1) forwards;
+    }
+    .success-checkmark__check{
+      transform-origin:50% 50%; stroke-dasharray:48; stroke-dashoffset:48;
+      animation:stroke 0.3s cubic-bezier(0.65,0,0.45,1) 0.8s forwards;
+    }
+    @keyframes stroke{100%{stroke-dashoffset:0}}
+    @keyframes scale{0%,100%{transform:none} 50%{transform:scale3d(1.1,1.1,1)}}
+    @keyframes fill{100%{box-shadow:inset 0 0 0 30px #2dd4bf}}
+  </style>
+</head>
+<body>
+  <!-- ENHANCED TOPBAR -->
+  <header class="topbar" id="topbar">
+    <nav class="nav">
+      <div class="brand" onclick="location.reload()">
+        <div class="logo animate-float">G</div>
+        <div>
+          <div class="brand-text">GENIUS.AI.SOLUTION</div>
+          <div class="brand-tagline">KI-Vertragsoptimierung</div>
+        </div>
+      </div>
+
+      <div class="nav-stats">
+        <div class="nav-stat">
+          <span>🔥</span>
+          <span>Ø Ersparnis: <strong>€1.247</strong></span>
+        </div>
+        <div class="nav-stat">
+          <span>⚡</span>
+          <span>Beta-Plätze: <strong id="nav-remaining">753</strong></span>
+        </div>
+      </div>
+
+      <div class="countdown animate-glow">
+        <span class="countdown-emoji">⏰</span>
+        <span>Beta endet in <strong id="countdown-timer">12d 05h 23m</strong></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+    <!-- ENHANCED HERO -->
+    <section class="hero animate-in">
+      <div class="badge">
+        🚀 Exklusive Beta · Limitiert auf 1.000 Tester
+      </div>
+      
+      <h1>
+        KI optimiert deine Verträge —<br>
+        spare <span class="hero-highlight">€1.247 pro Jahr</span>
+      </h1>
+      
+      <p class="lead">
+        <strong>Exklusiver Beta-Zugang:</strong> Unsere KI analysiert deine Verträge in 30 Sekunden und findet automatisch bessere Angebote. 
+        Sichere dir jetzt <strong>3 Monate Premium kostenlos</strong> (Wert: €30).
+      </p>
+
+      <div class="stats">
+        <div class="stat animate-in">
+          <span class="stat-number" data-target="1247">€0</span>
+          <div class="stat-label">Ø Ersparnis</div>
+          <div class="stat-sublabel">pro Nutzer/Jahr</div>
+        </div>
+        <div class="stat animate-in">
+          <span class="stat-number" data-target="30">0s</span>
+          <div class="stat-label">KI-Analyse</div>
+          <div class="stat-sublabel">Bearbeitungszeit</div>
+        </div>
+        <div class="stat animate-in">
+          <span class="stat-number" data-target="753" id="hero-remaining">753</span>
+          <div class="stat-label">Beta-Plätze</div>
+          <div class="stat-sublabel">noch verfügbar</div>
+        </div>
+        <div class="stat animate-in">
+          <span class="stat-number">98%</span>
+          <div class="stat-label">Erfolgsquote</div>
+          <div class="stat-sublabel">Optimierungen</div>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <button class="cta animate-pulse" id="main-cta">
+          🚀 Jetzt kostenlosen Beta-Platz sichern
+        </button>
+        <button class="ghost" id="demo-btn">
+          📹 2-Min Demo ansehen
+        </button>
+      </div>
+
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <span>🔒</span> DSGVO-konform
+        </div>
+        <div class="trust-badge">
+          <span>⚡</span> Sofortige Analyse
+        </div>
+        <div class="trust-badge">
+          <span>✨</span> Keine Kündigung nötig
+        </div>
+        <div class="trust-badge">
+          <span>🎯</span> 30 Tage Geld-zurück
+        </div>
+      </div>
+
+      <div class="floating">🤖💰⚡</div>
+    </section>
+
+    <!-- ENHANCED REGISTRATION CARD -->
+    <aside class="card animate-in">
+      <h3>🎁 Beta-Platz sichern</h3>
+      
+      <div class="seats">
+        <div class="pill" id="pill-counter">
+          <span id="registered-count">247</span> von 1.000 belegt
+        </div>
+        <div class="value">Wert: €30 (3 Monate)</div>
+      </div>
+
+      <form id="beta-form" novalidate>
+        <div class="row">
+          <input 
+            id="fullName" 
+            name="name" 
+            placeholder="Vor- und Nachname *" 
+            required 
+            autocomplete="name"
+            data-validate="name"
+          />
+        </div>
+        
+        <div class="row">
+          <input 
+            id="email" 
+            name="email" 
+            type="email" 
+            placeholder="E-Mail Adresse *" 
+            required 
+            autocomplete="email"
+            data-validate="email"
+          />
+        </div>
+
+        <div class="row">
+          <select id="interest" name="interest" aria-label="Hauptinteresse">
+            <option value="">Was möchtest du hauptsächlich optimieren?</option>
+            <option value="strom-gas">⚡ Strom & Gas (Ø -€420/Jahr)</option>
+            <option value="versicherungen">🛡️ Versicherungen (Ø -€380/Jahr)</option>
+            <option value="mobilfunk">📱 Mobilfunk & Internet (Ø -€240/Jahr)</option>
+            <option value="banking">🏦 Banking & Kredite (Ø -€580/Jahr)</option>
+            <option value="alles">🎯 Alles optimieren (Ø -€1.247/Jahr)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <input 
+            id="monthlySpend" 
+            name="monthlySpend" 
+            placeholder="Aktuelle Vertragskosten/Monat € (optional)" 
+            inputmode="numeric"
+            data-validate="number"
+          />
+        </div>

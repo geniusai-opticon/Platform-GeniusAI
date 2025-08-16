@@ -1,0 +1,155 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENIUS.AI.SOLUTION - Kundenportal Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow">
+        <div class="container mx-auto px-6 py-3 flex justify-between">
+            <a href="/dashboard" class="text-xl font-bold text-gray-800">GENIUS.AI.SOLUTION</a>
+            <div class="space-x-4">
+                <a href="/dashboard/profile" class="text-gray-600 hover:text-gray-800">Profil</a>
+                <a href="/dashboard/settings" class="text-gray-600 hover:text-gray-800">Einstellungen</a>
+                <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Abmelden</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-6">Willkommen im Kundenportal</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Optimierung Status -->
+                <div class="bg-white p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Optimierungsstatus</h3>
+                    <p class="text-gray-600">Verbleibende Optimierungen: <span id="remainingOptimizations">2</span>/Monat</p>
+                    <button id="optimizeNow" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Jetzt optimieren</button>
+                </div>
+
+                <!-- Vertragsarchiv -->
+                <div class="bg-white p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Vertragsarchiv</h3>
+                    <p class="text-gray-600">Gespeicherte Verträge: 5 (Basic)</p>
+                    <a href="/dashboard/contracts" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Verträge anzeigen</a>
+                </div>
+
+                <!-- Sparpotenzial -->
+                <div class="bg-white p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Sparpotenzial</h3>
+                    <p class="text-gray-600">Sie könnten bis zu 150€ sparen!</p>
+                    <a href="/dashboard/savings" class="mt-4 inline-block bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Details anzeigen</a>
+                </div>
+
+                <!-- Bonusprogramm -->
+                <div class="bg-white p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Bonusprogramm</h3>
+                    <p class="text-gray-600">Aktuelle Punkte: 50 | Nächster Bonus: 100 Punkte = 5€ Gutschein</p>
+                    <a href="/dashboard/bonuses" class="mt-4 inline-block bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Bonusse einlösen</a>
+                </div>
+
+                <!-- Referral Modell -->
+                <div class="bg-white p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Empfehlungsprogramm</h3>
+                    <p class="text-gray-600">Einladungslink: <a href="#" class="text-blue-500">https://genius.ai/referral/12345</a></p>
+                    <p class="text-gray-600">Verdiene 10€ für jeden erfolgreichen Referral!</p>
+                    <button id="copyReferral" class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Link kopieren</button>
+                </div>
+
+                <!-- Aktionen -->
+                <div class="bg-white p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Aktuelle Aktionen</h3>
+                    <p class="text-gray-600">Sparen Sie 20% auf Ihren nächsten Upgrade bis 15.08.2025!</p>
+                    <a href="/dashboard/offers" class="mt-4 inline-block bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Mehr erfahren</a>
+                </div>
+            </div>
+
+            <!-- One-Click Funktion (Pro Feature) -->
+            <div id="proFeatures" class="mt-6 bg-white p-6 rounded shadow hidden">
+                <h3 class="text-xl font-semibold mb-2">OneClick-Funktion</h3>
+                <p class="text-gray-600">Laden Sie Verträge hoch und optimieren Sie mit einem Klick.</p>
+                <input type="file" id="contractUpload" class="mt-2">
+                <button id="startOptimization" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Optimierung starten</button>
+            </div>
+
+            <!-- Support -->
+            <div class="mt-6 bg-white p-6 rounded shadow">
+                <h3 class="text-xl font-semibold mb-2">Support</h3>
+                <p class="text-gray-600">E-Mail-Support verfügbar</p>
+                <a href="/dashboard/support" class="mt-2 inline-block bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Kontakt aufnehmen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 GENIUS.AI.SOLUTION</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Pro features based on membership
+        const membership = "Basic"; // Replace with dynamic check from backend
+        if (membership === "Pro") {
+            document.getElementById("proFeatures").classList.remove("hidden");
+            document.getElementById("optimizeNow").style.display = "none";
+        }
+
+        // Copy Referral Link
+        document.getElementById("copyReferral").addEventListener("click", () => {
+            navigator.clipboard.writeText("https://genius.ai/referral/12345");
+            alert("Link kopiert!");
+        });
+
+        // Example event listener for optimization
+        document.getElementById("startOptimization").addEventListener("click", () => {
+            alert("Optimierung gestartet. Sie erhalten eine E-Mail mit Empfehlungen.");
+            // Add API call here
+        });
+    </script>
+</body>
+</html>
